@@ -8,13 +8,14 @@
   font-size: 15px;
   background-color: black;
   color: white;
-  text-transform: uppercase;
-  font-family: 'Open Sans Condensed';
+  text-transform: capitalize;
+  font-family: 'Open Sans';
   font-weight: bolder;
   border: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
+  border-radius: 8px;
 
   &:hover {
     background-color: white;
