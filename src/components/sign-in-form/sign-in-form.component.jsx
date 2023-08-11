@@ -8,6 +8,7 @@ import {
   
   } from '../../utils/firebase/firebase.utils'
 
+
 import './sign-in-form.styles.scss'
 
 const defaultFields ={
@@ -26,8 +27,7 @@ const SignInForm = () => {
   const logGoogleUser = async() => {
 
     try {
-      const {user} = await signInWithGooglePopup()
-      await createUserDocumentFromAuth(user)
+      await signInWithGooglePopup()
     } catch (error) {
       console.log(error)
     }
@@ -48,12 +48,12 @@ const SignInForm = () => {
     if(!email || !password) return
 
     try {
-      const res = await signInUserWithEmailAndPassword(email, password)
-      console.log(res)
+      const { user } = await signInUserWithEmailAndPassword(email, password)
     } catch (error) {
       setError(`${error.code}`)
       console.log(error)
     }
+    setFields(defaultFields)
   }
 
 
