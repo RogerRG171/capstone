@@ -1,0 +1,26 @@
+.cart-item-card-container {
+  display: grid;
+  min-width: 471px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 40px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid darkgrey;
+
+  img {
+    width: 100%;
+  }
+  .quantity-container {
+    display: flex;
+    gap: 8px;
+    .cursor {
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+
+  .remove{
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
