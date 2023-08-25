@@ -1,20 +1,25 @@
-import React, { Fragment, useContext } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
-import {UserContext } from '../../context/user.context';
-import { signOutUser } from '../../utils/firebase/firebase.utils';
+import React, { Fragment, useContext } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, Outlet } from 'react-router-dom'
+import { ReactComponent as CrwnLogo } from '../../assets/crown.svg'
+import { signOutUser } from '../../utils/firebase/firebase.utils'
 
-import CartIcon from '../../components/cart-icon/cart-icon.component';
-import CartDropdown from './../../components/cart-dropdown/cart-dropdown.component';
+import CartIcon from '../../components/cart-icon/cart-icon.component'
+import CartDropdown from './../../components/cart-dropdown/cart-dropdown.component'
+import { selectCurrentUser } from '../../store/user/user.selector'
+import { selectCartDisplay } from '../../store/cart/cart.selector'
+import { setCartDisplay } from '../../store/cart/cart.action';
 
 import "./navigation.styles.scss"
-import { CartContext } from '../../context/cart.context';
+
 
 const Navigation = () => {
 
-  //context
-  const {currentUser} = useContext(UserContext)
-  const {cartDisplay, setCartDisplay} = useContext(CartContext)
+  const dispatch = useDispatch()
+
+  //redux
+  const currentUser = useSelector(selectCurrentUser)
+  const cartDisplay = useSelector(selectCartDisplay)
 
   return (
     <Fragment>
@@ -35,7 +40,7 @@ const Navigation = () => {
               SING IN            
             </Link>
           )}
-          <CartIcon onClick={()=>setCartDisplay(!cartDisplay)}/>
+          <CartIcon onClick={()=>dispatch(setCartDisplay(!cartDisplay))}/>
         </div>
         {cartDisplay && <CartDropdown />}
       </div>
