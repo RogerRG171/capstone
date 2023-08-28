@@ -3,9 +3,10 @@ import { useState, useEffect } from 'react';
 
 import ProductCard from '../../components/product-card/product-card.components';
 import { useSelector } from 'react-redux';
-import { selectCategoriesMap } from '../../store/categories/category.selector';
+import { selectCategoriesIsLoading, selectCategoriesMap } from '../../store/categories/category.selector';
 
 import './category.styles.scss'
+import Spinner from '../../components/spinner/spinner.component';
 
 const Category = () => {
 
@@ -17,6 +18,7 @@ const Category = () => {
   
   //redux
   const categoriesMap = useSelector(selectCategoriesMap)
+  const isLoading = useSelector(selectCategoriesIsLoading)
 
 
   //hooks
@@ -28,12 +30,16 @@ const Category = () => {
   return (
     <>
       <h2 className='category-title'>{category}</h2>
-      <div className='category-container'>
-        {products && products.map(product =>  (
-              <ProductCard product={product} key={product.id}/>
-            ))
-        }
-      </div>
+        {
+          isLoading ? (<Spinner />)
+          :(
+            <div className='category-container'>
+                {products && products.map(product =>  (
+                  <ProductCard product={product} key={product.id}/>
+                  ))   
+                }   
+            </div>
+          )}
     </>
   )
 }
