@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^2.2.0",
+    "@stripe/stripe-js": "^2.1.2",
+    "dotenv": "^16.3.1",
     "firebase": "^10.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -22,6 +25,7 @@
     "redux-thunk": "^2.4.2",
     "reselect": "^4.1.8",
     "sass": "^1.64.2",
+    "stripe": "^13.5.0",
     "vite-plugin-svgr": "^3.2.0"
   },
   "devDependencies": {
